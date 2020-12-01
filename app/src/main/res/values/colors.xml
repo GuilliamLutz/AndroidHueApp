@@ -7,4 +7,9 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="button_text">#bbbbbb</color>
+    <color name="button_background">#484848</color>
+    <color name="textview_text">#7e7e7e</color>
+    <color name="recyclerview_background">#1f1f1f</color>
+    <color name="main_background">#242424</color>
 </resources>
