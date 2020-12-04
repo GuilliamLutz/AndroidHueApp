@@ -49,7 +49,7 @@ public class DetailLampActivity extends Fragment {
         onOffSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                DataSingleton.getInstance().getManager().setOnState(isChecked, DataSingleton.getInstance().getPressedItem() + "");
+                DataSingleton.getInstance().getManager().setOnState(isChecked, DataSingleton.getInstance().getPressedItem()+1 + "");
             }
         });
 
@@ -69,7 +69,7 @@ public class DetailLampActivity extends Fragment {
                     float[] hsv = new float[3];
                     Color.colorToHSV(button.getHighlightColor(), hsv);
                     System.out.println(hsv[0] + " - " + hsv[1] + " - " + hsv[2]);
-                    DataSingleton.getInstance().getManager().setColorState((int) (hsv[0] / 360 * 65535), (int) (hsv[1] * 255 - 1), (int) (hsv[2] * 255 - 1), DataSingleton.getInstance().getPressedItem() + "");
+                    DataSingleton.getInstance().getManager().setColorState((int) (hsv[0] / 360 * 65535), (int) (hsv[1] * 255 - 1), (int) (hsv[2] * 255 - 1), DataSingleton.getInstance().getPressedItem()+1 + "");
                 }
                 else {
                     Toast.makeText(DataSingleton.getInstance().getAppContext(), "Lamp is off", Toast.LENGTH_SHORT).show();
@@ -77,4 +77,6 @@ public class DetailLampActivity extends Fragment {
             }
         });
     }
+
+
 }

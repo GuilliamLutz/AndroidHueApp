@@ -4,6 +4,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -18,10 +19,6 @@ public class HueAdapter extends RecyclerView.Adapter<HueAdapter.ViewHolder> {
 
     public void updateData(List<HueLight> lights) {
         this.localDataSet = lights;
-    }
-
-    public interface onItemClickListener {
-        void onItemClick(int position);
     }
 
     /**
@@ -48,7 +45,8 @@ public class HueAdapter extends RecyclerView.Adapter<HueAdapter.ViewHolder> {
         @Override
         public void onClick(View v) {
             int clickedPosition = getAdapterPosition();
-
+            DataSingleton.getInstance().setPressedItem(clickedPosition);
+            DataSingleton.getInstance().getFragmentManager().beginTransaction().replace(R.id.fragment_container, new DetailLampActivity()).commit();
         }
     }
 
