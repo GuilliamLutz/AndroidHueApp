@@ -16,4 +16,5 @@
     <color name="lampbar_on">#ffcd78</color>
     <color name="lampTitle">#bfbfbf</color>
     <color name="lampDescription">#757575</color>
+    <color name="switch_background">#5b5b5b</color>
 </resources>

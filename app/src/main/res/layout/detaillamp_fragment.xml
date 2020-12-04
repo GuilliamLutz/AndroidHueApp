@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/main_background"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <TextView
@@ -11,6 +12,7 @@
         android:layout_height="50dp"
         android:gravity="center"
         android:text="Name Lamp"
+        android:textColor="@color/textview_text"
         android:textIsSelectable="false"
         android:textSize="24sp"
         android:textStyle="bold"
@@ -20,9 +22,13 @@
 
     <Switch
         android:id="@+id/detail_switch"
-        android:layout_width="75dp"
+        android:layout_width="50dp"
         android:layout_height="50dp"
+        android:layout_marginRight="20dp"
+        android:scaleY="2"
+        android:scaleX="2"
         android:checked="true"
+        android:shadowColor="@color/switch_background"
         android:text=""
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -32,6 +38,7 @@
         android:layout_width="300dp"
         android:layout_height="300dp"
         android:layout_marginBottom="128dp"
+        android:background="@color/button_background"
         android:addStatesFromChildren="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -42,9 +49,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="24dp"
+        app:backgroundTint="@color/button_background"
         android:onClick="button_clicked"
         android:text="Change"
-        android:textColor="@color/black"
+        android:textColor="@color/button_text"
         android:textSize="25sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
