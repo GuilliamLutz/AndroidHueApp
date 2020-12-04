@@ -1,5 +1,6 @@
 package com.example.androidhueapplicatie;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,11 +20,15 @@ public class HueAdapter extends RecyclerView.Adapter<HueAdapter.ViewHolder> {
         this.localDataSet = lights;
     }
 
+    public interface onItemClickListener {
+        void onItemClick(int position);
+    }
+
     /**
      * Provide a reference to the type of views that you are using
      * (custom ViewHolder).
      */
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private Switch switchButton;
         private TextView lampTitel;
         private TextView lampDescription;
@@ -33,14 +38,18 @@ public class HueAdapter extends RecyclerView.Adapter<HueAdapter.ViewHolder> {
             super(view);
             // Define click listener for the ViewHolder's View
 
+//            textView = (TextView) view.findViewById(R.id.textView);
+            itemView.setOnClickListener(this);
             this.switchButton = view.findViewById(R.id.lampOnOffSwitch);
             this.lampTitel = view.findViewById(R.id.lampTitle);
             this.lampDescription = view.findViewById(R.id.lampDescription);
         }
 
-//        public TextView getTextView() {
-//            return textView;
-//        }
+        @Override
+        public void onClick(View v) {
+            int clickedPosition = getAdapterPosition();
+
+        }
     }
 
     /**

@@ -1,10 +1,11 @@
 package com.example.androidhueapplicatie;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.ListFragment;
 
 import android.os.Bundle;
 
-public class MainActivity extends AppCompatActivity{
+public class MainActivity extends AppCompatActivity implements HueAdapter.onItemClickListener{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,4 +19,9 @@ public class MainActivity extends AppCompatActivity{
     }
 
 
+    @Override
+    public void onItemClick(int position) {
+        DataSingleton.getInstance().setPressedItem(position);
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new DetailLampActivity()).commit();
+    }
 }

@@ -12,6 +12,13 @@ public class DataSingleton implements HueApiListener{
     private Context appContext;
     private HueApiManager manager;
     private List<HueLight> lights;
+
+    public int getPressedItem() {
+        return pressedItem;
+    }
+
+    private int pressedItem;
+
     private HueAdapter adapter;
 
     private DataSingleton() {
@@ -63,5 +70,9 @@ public class DataSingleton implements HueApiListener{
 
     public HueApiManager getManager() {
         return manager;
+    }
+
+    public void setPressedItem(int position) {
+        this.pressedItem = position;
     }
 }
