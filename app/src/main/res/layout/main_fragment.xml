@@ -8,7 +8,7 @@
     tools:context=".MainActivity">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/LampList"
+        android:id="@+id/lampList"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:background="@color/recyclerview_background"
@@ -42,7 +42,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Switch
-        android:id="@+id/switch1"
+        android:id="@+id/appOnOffSwitch"
         android:layout_width="50dp"
         android:layout_height="40dp"
         android:layout_marginTop="10dp"

@@ -3,28 +3,40 @@ package com.example.androidhueapplicatie;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
+import android.widget.Switch;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.List;
 
 public class HueAdapter extends RecyclerView.Adapter<HueAdapter.ViewHolder> {
 
-    private String[] localDataSet;
+    private List<HueLight> localDataSet;
 
     /**
      * Provide a reference to the type of views that you are using
      * (custom ViewHolder).
      */
     public static class ViewHolder extends RecyclerView.ViewHolder {
-//        private final TextView textView;
+        private Switch switchButton;
+        private TextView lampTitel;
+        private TextView lampDescription;
+
 
         public ViewHolder(View view) {
             super(view);
             // Define click listener for the ViewHolder's View
 
-//            textView = (TextView) view.findViewById(R.id.textView);
+            this.switchButton = view.findViewById(R.id.lampOnOffSwitch);
+            this.lampTitel = view.findViewById(R.id.lampTitle);
+            this.lampDescription = view.findViewById(R.id.lampDescription);
         }
+
+//        public TextView getTextView() {
+//            return textView;
+//        }
     }
 
     /**
@@ -33,7 +45,7 @@ public class HueAdapter extends RecyclerView.Adapter<HueAdapter.ViewHolder> {
      * @param dataSet String[] containing the data to populate views to be used
      *                by RecyclerView.
      */
-    public HueAdapter(String[] dataSet) {
+    public HueAdapter(List<HueLight> dataSet) {
         localDataSet = dataSet;
     }
 
@@ -53,13 +65,20 @@ public class HueAdapter extends RecyclerView.Adapter<HueAdapter.ViewHolder> {
 
         // Get element from your dataset at this position and replace the
         // contents of the view with that element
-//        viewHolder.getTextView().setText(localDataSet[position]);
+        viewHolder.lampTitel.setText(localDataSet.get(position).getName());
+        viewHolder.lampDescription.setText(localDataSet.get(position).getType());
+        viewHolder.switchButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                DataSingleton.getInstance().getManager().
+            }
+        });
     }
 
     // Return the size of your dataset (invoked by the layout manager)
     @Override
-    public int getItemCount() {
-        return localDataSet.length;
-    }
+//    public int getItemCount() {
+//        return localDataSet.length;
+//    }
 
 }
