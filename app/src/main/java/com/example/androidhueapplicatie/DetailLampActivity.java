@@ -2,6 +2,7 @@ package com.example.androidhueapplicatie;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,6 +25,7 @@ public class DetailLampActivity extends Fragment {
     private Switch onOffSwitch;
     private ColorPickerView colorPicker;
     private Button button;
+    private Button backButton;
 
     @Nullable
     @Override
@@ -41,6 +43,7 @@ public class DetailLampActivity extends Fragment {
         this.onOffSwitch = view.findViewById(R.id.detail_switch);
         this.colorPicker = view.findViewById(R.id.detail_colorPickerView);
         this.button = view.findViewById(R.id.detail_button);
+        this.backButton = view.findViewById(R.id.backButton);
 
         //set the lamp title/name
         nameLamp.setText(light.getName());
@@ -49,7 +52,7 @@ public class DetailLampActivity extends Fragment {
         onOffSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                DataSingleton.getInstance().getManager().setOnState(isChecked, DataSingleton.getInstance().getPressedItem()+1 + "");
+                DataSingleton.getInstance().getManager().setOnState(isChecked, DataSingleton.getInstance().getPressedItem() + 1 + "");
             }
         });
 
@@ -69,13 +72,21 @@ public class DetailLampActivity extends Fragment {
                     float[] hsv = new float[3];
                     Color.colorToHSV(button.getHighlightColor(), hsv);
                     System.out.println(hsv[0] + " - " + hsv[1] + " - " + hsv[2]);
-                    DataSingleton.getInstance().getManager().setColorState((int) (hsv[0] / 360 * 65535), (int) (hsv[1] * 255 - 1), (int) (hsv[2] * 255 - 1), DataSingleton.getInstance().getPressedItem()+1 + "");
-                }
-                else {
+                    DataSingleton.getInstance().getManager().setColorState((int) (hsv[0] / 360 * 65535), (int) (hsv[1] * 255 - 1), (int) (hsv[2] * 255 - 1), DataSingleton.getInstance().getPressedItem() + 1 + "");
+                } else {
                     Toast.makeText(DataSingleton.getInstance().getAppContext(), "Lamp is off", Toast.LENGTH_SHORT).show();
                 }
             }
+
         });
+
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DataSingleton.getInstance().getFragmentManager().beginTransaction().replace(R.id.fragment_container, new ListFragment()).commit();
+            }
+        });
+
     }
 
 
