@@ -61,11 +61,59 @@
         android:id="@+id/backButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="BACK"
         android:backgroundTint="@color/button_background"
         android:onClick="goBack"
+        android:text="BACK"
         android:textColor="@color/button_text"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/modelId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="42dp"
+        android:text="Model ID:"
+        android:textColor="@color/textview_text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/backButton" />
+
+    <TextView
+        android:id="@+id/type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="40dp"
+        android:text="Type:"
+        android:textColor="@color/textview_text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/modelId" />
+
+    <TextView
+        android:id="@+id/modelIdInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="40dp"
+        android:text="TextView"
+        android:background="@color/lampbar_off"
+        android:textColor="@color/textview_text"
+        app:layout_constraintStart_toEndOf="@+id/modelId"
+        app:layout_constraintTop_toBottomOf="@+id/detail_nameLamp" />
+
+    <TextView
+        android:id="@+id/typeInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="45dp"
+        android:layout_marginTop="40dp"
+        android:text="TextView"
+        android:background="@color/lampbar_off"
+        android:textColor="@color/textview_text"
+        app:layout_constraintStart_toEndOf="@+id/type"
+        app:layout_constraintTop_toBottomOf="@+id/modelIdInfo" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

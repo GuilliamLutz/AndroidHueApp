@@ -2,7 +2,6 @@ package com.example.androidhueapplicatie;
 
 import android.graphics.Color;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,6 +25,8 @@ public class DetailLampActivity extends Fragment {
     private ColorPickerView colorPicker;
     private Button button;
     private Button backButton;
+    private TextView modelId;
+    private TextView type;
 
     @Nullable
     @Override
@@ -44,10 +45,14 @@ public class DetailLampActivity extends Fragment {
         this.colorPicker = view.findViewById(R.id.detail_colorPickerView);
         this.button = view.findViewById(R.id.detail_button);
         this.backButton = view.findViewById(R.id.backButton);
+        this.modelId = view.findViewById(R.id.modelIdInfo);
+        this.type = view.findViewById(R.id.typeInfo);
 
         //set the lamp title/name
         nameLamp.setText(light.getName());
         onOffSwitch.setChecked(light.getOn());
+        type.setText(light.getType());
+        modelId.setText(light.getModelId());
 
         //On/Off switch listener
         onOffSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
