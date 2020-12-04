@@ -9,9 +9,7 @@ public class DataSingleton implements HueApiListener{
     private static DataSingleton instance = null;
 
     private Context appContext;
-
     private HueApiManager manager;
-
     private List<HueLight> lights;
     private DataSingleton() {
         lights = new ArrayList<>();

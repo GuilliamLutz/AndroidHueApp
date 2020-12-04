@@ -9,7 +9,7 @@ public class MainActivity extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main_fragment);
+        setContentView(R.layout.fragment_holder);
 
         DataSingleton.getInstance().setContext(getApplicationContext());
         DataSingleton.getInstance().getManager().getHueLights();

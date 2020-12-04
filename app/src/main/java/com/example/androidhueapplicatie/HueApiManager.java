@@ -10,6 +10,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.google.gson.reflect.TypeToken;
 
@@ -23,6 +25,8 @@ import java.util.List;
 
 public class HueApiManager {
     private static final String LOGTAG = HueApiManager.class.getName();
+    private static final String IP = "192.168.178.27";
+//    private static final String IP = "localhost";
 
     private RequestQueue queue;
     private HueApiListener listener;
@@ -35,7 +39,7 @@ public class HueApiManager {
     }
 
     public void getHueLights() {
-        final String url = "http://192.168.178.27/api/newdeveloper";
+        final String url = "http://" + IP + "/api/newdeveloper";
         final JsonObjectRequest request = new JsonObjectRequest(
                 Request.Method.GET,
                 url,
@@ -63,6 +67,71 @@ public class HueApiManager {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         Log.e(LOGTAG, error.getLocalizedMessage());
+                    }
+                }
+        );
+        this.queue.add(request);
+    }
+
+    public void setOnState(boolean state, String id) {
+        JSONObject json = new JSONObject();
+        try {
+            json.put("on", state);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        final String url = "http://" + IP + "/api/newdeveloper/lights/" + id + "/state";
+        Log.d(LOGTAG, "send onState: " + json);
+        final JsonObjectRequest request = new JsonObjectRequest(
+                Request.Method.PUT,
+                url,
+                json,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        // response
+                        Log.d(LOGTAG, "Response: " + response.toString());
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        // error
+                        Log.d(LOGTAG, "Error.Response: " + error.toString());
+                    }
+                }
+        );
+        this.queue.add(request);
+    }
+
+    public void setColorState(int hue, int saturation, int brightness, String id){
+        JSONObject json = new JSONObject();
+        try {
+            json.put("bri", brightness);
+            json.put("hue", hue);
+            json.put("sat", saturation);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        final String url = "http://" + IP + "/api/newdeveloper/lights/" + id + "/state";
+        Log.d(LOGTAG, "send colorState: " + json);
+        final JsonObjectRequest request = new JsonObjectRequest(
+                Request.Method.PUT,
+                url,
+                json,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        // response
+                        Log.d(LOGTAG, "Response: " + response.toString());
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        // error
+                        Log.d(LOGTAG, "Error.Response: " + error.toString());
                     }
                 }
         );
