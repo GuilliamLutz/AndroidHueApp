@@ -4,9 +4,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_marginHorizontal="20dp"
+    android:layout_marginBottom="16dp"
     android:layout_width="match_parent"
     android:layout_height="100dp"
-    android:background="@color/lampbar_off"
+    android:background="@drawable/rounded_button"
     >
 
 
@@ -24,7 +25,7 @@
         android:id="@+id/lampOnOffSwitch"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginRight="20dp"
+        android:layout_marginRight="30dp"
         android:checked="true"
         android:scaleX="2"
         android:scaleY="2"

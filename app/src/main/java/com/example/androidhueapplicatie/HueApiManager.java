@@ -27,7 +27,8 @@ public class HueApiManager {
     private static final String LOGTAG = HueApiManager.class.getName();
 //    private static final String IP = "192.168.178.27";
 //    private static final String IP = "localhost";
-    private static final String IP = "192.168.178.12";
+//    private static final String IP = "192.168.178.12";
+    private static final String IP = "192.168.99.144";
 
     private RequestQueue queue;
     private HueApiListener listener;
