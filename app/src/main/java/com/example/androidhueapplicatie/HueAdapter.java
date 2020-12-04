@@ -78,6 +78,7 @@ public class HueAdapter extends RecyclerView.Adapter<HueAdapter.ViewHolder> {
         // contents of the view with that element
         viewHolder.lampTitel.setText(localDataSet.get(position).getName());
         viewHolder.lampDescription.setText(localDataSet.get(position).getType());
+        viewHolder.switchButton.setChecked(localDataSet.get(position).getOn());
         viewHolder.switchButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {

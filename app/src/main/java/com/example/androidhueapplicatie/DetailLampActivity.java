@@ -47,6 +47,7 @@ public class DetailLampActivity extends Fragment {
 
         //set the lamp title/name
         nameLamp.setText(light.getName());
+        onOffSwitch.setChecked(light.getOn());
 
         //On/Off switch listener
         onOffSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
