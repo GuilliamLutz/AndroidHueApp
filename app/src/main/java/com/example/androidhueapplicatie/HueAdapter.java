@@ -1,8 +1,10 @@
 package com.example.androidhueapplicatie;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -23,7 +25,7 @@ public class HueAdapter extends RecyclerView.Adapter<HueAdapter.ViewHolder> {
      * Provide a reference to the type of views that you are using
      * (custom ViewHolder).
      */
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private Switch switchButton;
         private TextView lampTitel;
         private TextView lampDescription;
@@ -33,14 +35,19 @@ public class HueAdapter extends RecyclerView.Adapter<HueAdapter.ViewHolder> {
             super(view);
             // Define click listener for the ViewHolder's View
 
+//            textView = (TextView) view.findViewById(R.id.textView);
+            itemView.setOnClickListener(this);
             this.switchButton = view.findViewById(R.id.lampOnOffSwitch);
             this.lampTitel = view.findViewById(R.id.lampTitle);
             this.lampDescription = view.findViewById(R.id.lampDescription);
         }
 
-//        public TextView getTextView() {
-//            return textView;
-//        }
+        @Override
+        public void onClick(View v) {
+            int clickedPosition = getAdapterPosition();
+            DataSingleton.getInstance().setPressedItem(clickedPosition);
+            DataSingleton.getInstance().getFragmentManager().beginTransaction().replace(R.id.fragment_container, new DetailLampActivity()).commit();
+        }
     }
 
     /**

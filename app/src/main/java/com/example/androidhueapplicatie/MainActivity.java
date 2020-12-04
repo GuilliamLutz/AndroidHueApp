@@ -13,9 +13,9 @@ public class MainActivity extends AppCompatActivity{
 
         DataSingleton.getInstance().setContext(getApplicationContext());
         DataSingleton.getInstance().getManager().getHueLights();
+        DataSingleton.getInstance().setFragmentManager(getSupportFragmentManager());
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ListFragment()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ListFragment()).addToBackStack("Home").commit();
+
     }
-
-
 }

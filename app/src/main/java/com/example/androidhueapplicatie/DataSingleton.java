@@ -3,6 +3,8 @@ package com.example.androidhueapplicatie;
 import android.content.Context;
 import android.widget.Adapter;
 
+import androidx.fragment.app.FragmentManager;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,6 +14,14 @@ public class DataSingleton implements HueApiListener{
     private Context appContext;
     private HueApiManager manager;
     private List<HueLight> lights;
+    private int pressedItem;
+    private FragmentManager fragmentManager;
+
+
+    public int getPressedItem() {
+        return pressedItem;
+    }
+
     private HueAdapter adapter;
 
     private DataSingleton() {
@@ -63,5 +73,17 @@ public class DataSingleton implements HueApiListener{
 
     public HueApiManager getManager() {
         return manager;
+    }
+
+    public void setPressedItem(int position) {
+        this.pressedItem = position;
+    }
+
+    public void setFragmentManager(FragmentManager supportFragmentManager) {
+        this.fragmentManager = supportFragmentManager;
+    }
+
+    public FragmentManager getFragmentManager() {
+        return fragmentManager;
     }
 }
