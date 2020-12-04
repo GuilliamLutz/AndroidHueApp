@@ -6,7 +6,7 @@
     android:background="@color/main_background"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <TextView
+    <TextViewa
         android:id="@+id/detail_nameLamp"
         android:layout_width="0dp"
         android:layout_height="50dp"
@@ -38,7 +38,6 @@
         android:layout_width="300dp"
         android:layout_height="300dp"
         android:layout_marginBottom="128dp"
-        android:background="@color/button_background"
         android:addStatesFromChildren="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
