@@ -15,6 +15,10 @@ public class HueAdapter extends RecyclerView.Adapter<HueAdapter.ViewHolder> {
 
     private List<HueLight> localDataSet;
 
+    public void updateData(List<HueLight> lights) {
+        this.localDataSet = lights;
+    }
+
     /**
      * Provide a reference to the type of views that you are using
      * (custom ViewHolder).
@@ -70,15 +74,15 @@ public class HueAdapter extends RecyclerView.Adapter<HueAdapter.ViewHolder> {
         viewHolder.switchButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                DataSingleton.getInstance().getManager().
+                DataSingleton.getInstance().getManager().setOnState(b, position + 1 + "");
             }
         });
     }
 
     // Return the size of your dataset (invoked by the layout manager)
     @Override
-//    public int getItemCount() {
-//        return localDataSet.length;
-//    }
+    public int getItemCount() {
+        return localDataSet.size();
+    }
 
 }

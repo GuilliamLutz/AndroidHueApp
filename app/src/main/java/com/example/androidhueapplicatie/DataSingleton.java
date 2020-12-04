@@ -1,6 +1,7 @@
 package com.example.androidhueapplicatie;
 
 import android.content.Context;
+import android.widget.Adapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,6 +12,8 @@ public class DataSingleton implements HueApiListener{
     private Context appContext;
     private HueApiManager manager;
     private List<HueLight> lights;
+    private HueAdapter adapter;
+
     private DataSingleton() {
         lights = new ArrayList<>();
     }
@@ -38,6 +41,16 @@ public class DataSingleton implements HueApiListener{
     @Override
     public void onLightsAvailable(HueLight light) {
         addLight(light);
+        adapter.updateData(this.lights);
+        adapter.notifyDataSetChanged();
+    }
+
+    public void addAdapter(HueAdapter adapter){
+        this.adapter = adapter;
+    }
+
+    public HueAdapter getAdapter() {
+        return adapter;
     }
 
     public void clearLights() {
