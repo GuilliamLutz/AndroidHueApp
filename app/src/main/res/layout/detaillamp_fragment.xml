@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <TextView
-        android:id="@+id/Detail_nameLamp"
+        android:id="@+id/detail_nameLamp"
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:gravity="center"
@@ -28,7 +28,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.skydoves.colorpickerview.ColorPickerView
-        android:id="@+id/colorPickerView"
+        android:id="@+id/detail_colorPickerView"
         android:layout_width="300dp"
         android:layout_height="300dp"
         android:layout_marginBottom="128dp"
