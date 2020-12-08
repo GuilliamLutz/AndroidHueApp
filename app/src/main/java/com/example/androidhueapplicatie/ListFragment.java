@@ -30,6 +30,10 @@ public class ListFragment extends Fragment {
         this.lampView.setAdapter(this.listAdapter);
         this.lampView.setLayoutManager(new LinearLayoutManager(DataSingleton.getInstance().getAppContext()));
         DataSingleton.getInstance().addAdapter(this.listAdapter);
+
+        if(DataSingleton.getInstance().getLights().isEmpty()) {
+            DataSingleton.getInstance().getManager().getHueLights();
+        }
     }
 }
 
