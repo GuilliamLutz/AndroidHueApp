@@ -2,12 +2,18 @@ package com.example.androidhueapplicatie;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.security.InvalidParameterException;
+
 public class HueLight {
     private State state;
     private String name;
     private String type;
     @SerializedName("modelid")
     private String modelId;
+
+    public HueLight(State state) {
+        this.state = state;
+    }
 
     public String getName() {
         return name;
@@ -33,23 +39,38 @@ public class HueLight {
     public void setOn(Boolean on) {
         state.on = on;
     }
+    public void setBrightness(int brightness) {
+        if (brightness < 254 || 0 < brightness) {
+            this.state.brightness = brightness;
+        }
+        else {
+            throw new InvalidParameterException("Value must be between 0 and 255");
+        }
+    }
     public int getBrightness() {
         return state.brightness;
-    }
-    public void setBrightness(int brightness) {
-        state.brightness = brightness;
     }
     public int getHue() {
         return state.hue;
     }
     public void setHue(int hue) {
-        state.hue = hue;
+        if (hue < 65535 || 0 < hue) {
+            this.state.hue = hue;
+        }
+        else {
+            throw new InvalidParameterException("Value must be between 0 and 65535");
+        }
     }
     public int getSaturation() {
         return state.saturation;
     }
     public void setSaturation(int saturation) {
-        state.saturation = saturation;
+        if (saturation < 254 || 0 < saturation) {
+            this.state.saturation = saturation;
+        }
+        else {
+            throw new InvalidParameterException("Value must be between 0 and 255");
+        }
     }
 
     @Override
@@ -64,13 +85,16 @@ public class HueLight {
                 ", modelId='" + modelId + '\'' +
                 '}';
     }
+}
 
-    public class  State{
-        private Boolean on;
-        @SerializedName("bri")
-        private int brightness;
-        private int hue;
-        @SerializedName("sat")
-        private int saturation;
+class State{
+    public State() {
     }
+
+    public Boolean on;
+    @SerializedName("bri")
+    public int brightness;
+    public int hue;
+    @SerializedName("sat")
+    public int saturation;
 }
