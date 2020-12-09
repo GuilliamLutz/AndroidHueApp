@@ -3,24 +3,12 @@ package com.example.androidhueapplicatie;
 import android.content.Context;
 import android.util.Log;
 
-import com.android.volley.RequestQueue;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.google.gson.reflect.TypeToken;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
-import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.List;
 
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
@@ -30,25 +18,28 @@ import okhttp3.Response;
 
 public class HueApiManager {
     private static final String LOGTAG = HueApiManager.class.getName();
-    private static final String IP = "10.0.2.2";
 
     public static final MediaType JSON = MediaType.get("application/json; charset=utf-8");
     private OkHttpClient client;
     private HueApiListener listener;
-    private Context appContext;
+    private String getUrl = "http://10.0.2.2/api/newdeveloper";
 
-    public  HueApiManager(Context context, HueApiListener listener) {
-        this.appContext = context;
+
+    public  HueApiManager(HueApiListener listener) {
         this.listener = listener;
         this.client = new OkHttpClient();
     }
 
+    public void setGetUrl(String getUrl) {
+        this.getUrl = getUrl;
+    }
+
     public void getHueLights() {
         //Make the uri immutable
-        final String uri = "http://" + IP + "/api/newdeveloper";
+
 
         Request request = new Request.Builder()
-                .url(uri)
+                .url(getUrl)
                 .build();
 
         Thread t = new Thread(()-> {
@@ -78,7 +69,7 @@ public class HueApiManager {
     }
 
     public void setOnState(boolean state, String id) {
-        final String url = "http://" + IP + "/api/newdeveloper/lights/" + id + "/state";
+        final String url = "http://10.0.2.2/api/newdeveloper/lights/" + id + "/state";
 
         JSONObject json = new JSONObject();
         try {
@@ -109,7 +100,7 @@ public class HueApiManager {
     }
 
     public void setColorState(int hue, int saturation, int brightness, String id){
-        final String url = "http://" + IP + "/api/newdeveloper/lights/" + id + "/state";
+        final String url = "http://10.0.2.2/api/newdeveloper/lights/" + id + "/state";
 
         JSONObject json = new JSONObject();
         try {

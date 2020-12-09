@@ -1,7 +1,6 @@
 package com.example.androidhueapplicatie;
 
 import android.content.Context;
-import android.widget.Adapter;
 
 import androidx.fragment.app.FragmentManager;
 
@@ -37,7 +36,7 @@ public class DataSingleton implements HueApiListener{
 
     public void setContext(Context context){
         this.appContext = context;
-        this.manager = new HueApiManager(context, this);
+        this.manager = new HueApiManager(this);
     }
 
     public void addLight(HueLight light) {
